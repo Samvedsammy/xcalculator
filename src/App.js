@@ -41,15 +41,27 @@ function App() {
     <div className="calculator">
       <h1>React Calculator</h1>
 
-      {/* single input */}
-      <input type="text" value={expression} readOnly />
+      {/* REAL input (no fake/hidden input) */}
+      <input
+        type="text"
+        value={expression}
+        readOnly
+        data-testid="calculator-input"
+      />
 
-      {/* single result div */}
-      <div className="result">{result}</div>
+      {/* SINGLE result div */}
+      <div className="result" data-testid="calculator-result">
+        {result}
+      </div>
 
       <div className="buttons">
         {buttons.map((btn, i) => (
-          <button key={i} onClick={() => handleClick(btn)}>
+          <button
+            key={i}
+            type="button"
+            data-testid={`btn-${btn}`}
+            onClick={() => handleClick(btn)}
+          >
             {btn}
           </button>
         ))}
